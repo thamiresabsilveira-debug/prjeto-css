@@ -1,0 +1,67 @@
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2ecc71;
+    --spacing-base: 10px;
+}
+
+
+@mixin responsive-text($min-size, $max-size) {
+    font-size: $min-size;
+    @media (min-width: 600px) {
+        font-size: $max-size;
+    }
+}
+
+
+@mixin transition($property, $duration) {
+    transition: $property $duration ease-in-out;
+}
+
+
+.button {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-block;
+
+
+    transform: scale(1);
+    
+    /*Transição suave para cor e tamanho*/
+    
+    @include transition(all, 0.3s);
+    @include responsive-text(14px, 18px);
+
+
+    &:hover {
+        background-color: var(--secondary-color);
+        transform: scale(1.1); // Faz o botão aumentar de tamanho
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+}
+
+
+.card {
+    background: linear-gradient(135deg, #ffffff 0%, #f1f1f1 100%); // Gradiente suave
+    border-radius: 8px;
+padding: 20px;
+    max-width: 300px;
+    margin: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    @include transition(transform, 0.3s);
+
+
+    &:hover {
+        transform: translateY(-5px); // Flutua levemente
+    }
+
+
+    .card-title {
+        color: var(--primary-color);
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+}
